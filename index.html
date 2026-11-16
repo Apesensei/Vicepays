@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Pays</title>
+<link rel="stylesheet" href="style.css?v=19">
+<link rel="preload" as="image" href="assets/ui/siren-red.webp">
+<link rel="preload" as="image" href="assets/ui/siren-blue.webp">
+</head>
+<body>
+<div id="stage" class="stage">
+  <img class="bg sky" src="assets/bg/sky.webp" alt="">
+  <img class="skyline" src="assets/bg/skyline.webp" alt="">
+  <div class="water"></div>
+  <img class="bg palms" src="assets/bg/palms.webp" alt="">
+  <img class="bg rain" src="assets/bg/rain.webp" alt="">
+  <div class="tint"></div>
+
+  <img class="logo glow" src="assets/ui/logo.webp" alt="Vice Pays">
+
+  <div id="meter" class="meter" aria-label="Heat from wins in a row">
+    <span>Heat</span><i></i><i></i><i></i><i></i><i></i>
+  </div>
+  <div id="getaway" class="getaway" hidden>
+    <img class="glow" src="assets/ui/totalheat.webp" alt="Total Heat">
+    <output id="totalHeat">0x</output>
+    <p>Free spins left <b id="spinsLeft">0</b></p>
+  </div>
+
+  <div id="frame" class="frame">
+    <div id="board" class="board"></div>
+    <p id="banner" class="banner" hidden></p>
+  </div>
+
+  <div id="char" class="char"></div>
+
+  <div id="fx" class="fx"></div>
+  <div id="tier" class="tier" hidden><img id="tierArt" class="glow" alt=""><strong id="tierAmount"></strong></div>
+
+  <footer class="hud">
+    <button id="info" class="round" aria-label="Rules and pays">i</button>
+    <button id="mute" class="round" aria-label="Sound off" aria-pressed="false" title="Sound on or off">♪</button>
+    <div class="bet">
+      <button id="betDown" class="round" aria-label="Lower bet">−</button>
+      <span>Bet</span>
+      <button id="betUp" class="round" aria-label="Raise bet">+</button>
+    </div>
+    <div class="readout">
+      <span>Bet <output id="bet"></output></span>
+      <span>Win <output id="win"></output></span>
+      <span>Balance <output id="balance"></output></span>
+    </div>
+    <p id="note" class="note" role="status"></p>
+  </footer>
+  <button id="spin" class="spin" aria-label="Spin" title="Spin (space)"><img class="glow" src="assets/ui/spin.webp" alt=""></button>
+  <button id="force" class="demo">Demo: start the Getaway</button>
+  <button id="tiers" class="demo two">Demo: next win banner</button>
+  <button id="events" class="demo three">Demo: next random event</button>
+
+  <div id="overlay" class="overlay" hidden>
+    <img id="overlayArt" class="glow" alt="">
+    <strong id="overlayText"></strong>
+  </div>
+</div>
+
+<dialog id="rules">
+  <h2>Vice Pays</h2>
+  <p>8 or more of the same symbol anywhere on the 6 by 5 grid pay. Winning symbols drop away and new ones fall in, for as long as wins keep coming.</p>
+  <p><b>Heat signs</b> stay on the grid until the drops stop. If the spin won, their values are added together and multiply the win.</p>
+  <p><b>Wild:</b> counts as every symbol and is used up by the win it joins. Wilds only arrive by drive-by.</p>
+  <p><b>Random events in the base game:</b> a <b>drive-by</b> throws 2 to 5 wilds onto the grid; an <b>upgrade</b> turns every copy of the commonest low symbol into one high symbol; a <b>monitor glitch</b> can drop a fourth police light in when exactly 3 are showing.</p>
+  <p><b>The Getaway:</b> 4 or more police lights start 15 free spins. Heat from every winning free spin is banked into Total Heat, which multiplies that spin and never resets. 3 or more police lights during the Getaway add 5 spins.</p>
+  <table id="pays"></table>
+  <p class="fine">Demo only: play money, no real wagering. Maximum win 10,000x. Return to player <span id="rtp"></span>.</p>
+  <form method="dialog"><button>Close</button></form>
+</dialog>
+
+<script type="module" src="game.js?v=17"></script>
+</body>
+</html>
